@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>Jungle</title>
+    <meta charset="utf-8">
+    <link href="css/jungle.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="content">
+    <div id="jungle"></div>
+</div>
+ <script src="js/lib/require.js"></script>
+    <script type="text/javascript">
+        // set up require with config and shim to bring in libraries we need
+        require([
+            'js/main.config'], function(config) {
+            require([
+                'bd/Jungle',
+                'bd/animals/Monkey',
+                'bd/animals/Tiger',
+                'bd/animals/Snake',
+            ], function (Jungle, Monkey, Tiger, Snake) {
+
+                var jungle = new Jungle({el: $("#jungle")});
+
+                var monkey = new Monkey();
+                jungle.addAnimal(monkey);
+
+                var tiger = new Tiger();
+                jungle.addAnimal(tiger);
+
+                var snake = new Snake();
+                jungle.addAnimal(snake);
+
+                snake.makeSound();
+                snake.eat();
+
+                tiger.makeSound();
+            });
+
+
+        });
+
+    </script>
+</body>
+</html>
